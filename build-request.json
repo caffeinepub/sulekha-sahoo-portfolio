@@ -1,38 +1,37 @@
 {
   "kind": "build_request",
-  "title": "Apply User-Requested Changes to Portfolio Site",
-  "projectName": "Sulekha Sahoo Portfolio",
+  "title": "Remove proficiency span elements from first, second, and fourth skill cards",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-11",
-      "text": "Review the existing portfolio site and clarify what specific changes the user wants. In the meantime, make the following visible polish improvements: (1) Increase the hero section headline font size for greater visual impact on desktop. (2) Ensure all navigation links scroll precisely to their target sections without offset issues. (3) Add a real phone number placeholder '+91 XXXXX XXXXX' in the Contact section if not already present. (4) Make the portfolio grid items slightly taller for better visual balance. (5) Ensure the footer copyright year reads 2025.",
+      "id": "REQ-19",
+      "text": "In frontend/src/components/Skills.tsx, remove the three <span> elements identified by the following XPaths from the skill proficiency cards rendered in section 4: (1) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1], (2) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[2]/div[1]/div[1]/div[1]/span[1], (3) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[4]/div[1]/div[1]/div[1]/span[1]. These are the first span elements inside the inner-most div of the first, second, and fourth skill cards respectively. Remove them from the rendered output entirely so they no longer appear on the page.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5"
+          "msg-1"
         ],
         "quotes": [
-          "I WANT SOME CHAN GES"
+          "plz add edit konw"
         ]
       },
       "acceptanceCriteria": [
-        "Hero headline is visually large and bold on desktop screens",
-        "All nav links (Home, Work, Education, Contact) scroll correctly to their sections",
-        "Contact section shows a phone placeholder '+91 XXXXX XXXXX'",
-        "Portfolio grid items have adequate height for visual balance",
-        "Footer copyright line shows © 2025 Sulekha Sahoo"
+        "The first span element inside the inner-most div of the first skill card (Photoshop) is completely absent from the rendered DOM.",
+        "The first span element inside the inner-most div of the second skill card (Illustrator) is completely absent from the rendered DOM.",
+        "The first span element inside the inner-most div of the fourth skill card (InDesign) is completely absent from the rendered DOM.",
+        "The remaining content of each affected skill card (icon, label, other elements) is unaffected and still renders correctly.",
+        "The Skills section layout and scroll animations remain intact."
       ]
     }
   ],
   "constraints": [
-    "Do not alter the immutable frontend paths (hooks, main.tsx, ui components)",
-    "All existing features and content must remain intact"
+    "Only modify frontend/src/components/Skills.tsx — do not touch any other file.",
+    "Do not alter any other elements within the skill cards beyond removing the specified span elements."
   ],
   "nonGoals": [
-    "Adding new sections or features not previously requested",
-    "Backend changes",
-    "Changing the overall color scheme or typography system"
+    "Modifying any other section or component outside of Skills.tsx.",
+    "Changing the visual layout or styling of the remaining skill card content.",
+    "Adding new content or badges to the skill cards."
   ],
   "imageRequirements": {
     "required": [],

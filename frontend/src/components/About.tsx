@@ -31,11 +31,6 @@ export default function About() {
               {/* Decorative frame */}
               <div className="absolute inset-0 rounded-3xl ring-1 ring-sky/10" />
             </div>
-            {/* Floating badge */}
-            <div className="absolute -bottom-5 -right-5 bg-white rounded-2xl shadow-lg px-5 py-4 border border-sky/10">
-              <p className="text-2xl font-black text-sky">5+</p>
-              <p className="text-xs text-ink/60 font-medium">Years Experience</p>
-            </div>
             {/* Decorative dot grid */}
             <div className="absolute -top-4 -left-4 w-24 h-24 opacity-30"
               style={{

@@ -1,13 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Apply several visual polish improvements to the existing Sulekha Sahoo portfolio site.
+**Goal:** Remove specific proficiency span elements from the first, second, and fourth skill cards in the Skills section.
 
 **Planned changes:**
-- Increase the hero section headline font size for greater visual impact on desktop
-- Fix all navigation links (Home, Work, Education, Contact) to scroll precisely to their target sections without offset issues
-- Add a phone number placeholder '+91 XXXXX XXXXX' in the Contact section
-- Make portfolio grid items slightly taller for better visual balance
-- Update the footer copyright year to read © 2025 Sulekha Sahoo
+- Remove the first `<span>` element inside the inner-most div of the first skill card (Photoshop) in `Skills.tsx`
+- Remove the first `<span>` element inside the inner-most div of the second skill card (Illustrator) in `Skills.tsx`
+- Remove the first `<span>` element inside the inner-most div of the fourth skill card (InDesign) in `Skills.tsx`
 
-**User-visible outcome:** The portfolio site looks more polished with a bolder hero headline, correct scroll navigation, a phone placeholder in the contact section, taller portfolio cards, and an updated footer year.
+**User-visible outcome:** The proficiency span labels no longer appear on the first, second, and fourth skill cards, while all other card content and the Skills section layout remain unchanged.

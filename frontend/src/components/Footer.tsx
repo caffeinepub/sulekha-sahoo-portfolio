@@ -16,10 +16,6 @@ const navLinks = [
 ];
 
 export default function Footer() {
-  const appId = encodeURIComponent(
-    typeof window !== 'undefined' ? window.location.hostname : 'sulekha-portfolio'
-  );
-
   const handleNavClick = (href: string) => {
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -98,18 +94,10 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-sm">
-            © 2025 Sulekha Sahoo. All rights reserved.
+            © {new Date().getFullYear()} Sulekha Sahoo. All rights reserved.
           </p>
           <p className="text-white/40 text-sm flex items-center gap-1.5">
-            Built with <Heart className="w-3.5 h-3.5 text-sky fill-sky" /> using{' '}
-            <a
-              href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sky hover:text-sky-light transition-colors"
-            >
-              caffeine.ai
-            </a>
+            Built with <Heart className="w-3.5 h-3.5 text-sky fill-sky" /> using caffeine.ai
           </p>
         </div>
       </div>

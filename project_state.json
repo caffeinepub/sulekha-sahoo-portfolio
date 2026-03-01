@@ -1,11 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "Portfolio website for Sulekha Sahoo, a Professional Graphic Designer. Two style options discussed: Option 1 is a modern/creative minimalist-vibrant design with hero section, about me, skills gallery, education timeline, masonry portfolio grid, and contact form. Option 2 is a brand/professional structured site with sticky nav, service cards, education credentials, language info, and footer. Build is proceeding.",
+  "projectStateVersion": 15,
+  "summary": "Portfolio website for Sulekha Sahoo, a Professional Graphic Designer. Site includes hero, about me, skills gallery, education timeline, masonry portfolio grid, service cards, contact form, and footer. An Admin Dashboard with secure login (Internet Identity) and one-click portfolio photo upload/replace functionality is being added, so Sulekha can manage portfolio images and content without touching code.",
   "architectural_notes": [
     "Sky blue accent color palette with white space and minimalist-vibrant aesthetic",
     "Smooth scroll animations throughout the site",
-    "Bilingual support noted (Odia and Hindi)"
+    "Bilingual support noted (Odia and Hindi)",
+    "Admin Dashboard protected by Internet Identity (passkey/Google/Apple auth); portfolio images stored in app backend for persistence"
   ],
   "known_issues": [],
   "isFixRequest": false,
@@ -97,6 +98,54 @@
         "REQ-11"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-in-the-about-me-section-frontend-src-components-about-tsx-remove-the-floating-5-years-experience-badge-entirely-since-sulekha-is-a-fresher-with-0-years-of-experience-this-badge-should-not-appear-on-the-page-at-all",
+      "title": "In the About Me section (frontend/src/components/About.tsx), remove the floating '5+ years experience' badge entirely. Since Sulekha is a fresher with 0 years of experience, this badge should not appear on the page at all.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-admin-login-page-at-route-admin-or-toggled-via-a-hidden-url-that-uses-the-existing-internet-identity-hook-useinternetidentity-to-authenticate-after-successful-login-redirect-to-the-admin-dashboard-show-a-login-with-internet-identity-button-and-brief-instruction-text-the-page-must-be-unreachable-from-public-navigation-links",
+      "title": "Add an Admin login page at route /admin (or toggled via a hidden URL) that uses the existing Internet Identity hook (useInternetIdentity) to authenticate. After successful login, redirect to the Admin Dashboard. Show a 'Login with Internet Identity' button and brief instruction text. The page must be unreachable from public navigation links.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-an-admin-dashboard-page-visible-only-when-authenticated-via-internet-identity-with-1-a-grid-of-current-portfolio-items-fetched-from-the-backend-each-showing-a-thumbnail-title-category-and-action-buttons-replace-image-delete-2-a-quick-upload-form-with-drag-and-drop-or-file-picker-for-image-files-a-title-input-a-category-selector-branding-social-media-print-media-and-a-publish-button-that-calls-the-backend-addportfolioitem-3-a-logout-button-replacing-an-image-calls-replaceportfolioitem-deleting-calls-deleteportfolioitem-all-mutations-optimistically-update-the-ui-and-show-toast-notifications-on-success-or-failure",
+      "title": "Build an Admin Dashboard page (visible only when authenticated via Internet Identity) with: (1) a grid of current portfolio items fetched from the backend, each showing a thumbnail, title, category, and action buttons ('Replace Image', 'Delete'); (2) a 'Quick Upload' form with drag-and-drop or file picker for image files, a title input, a category selector (Branding, Social Media, Print Media), and a 'Publish' button that calls the backend addPortfolioItem; (3) a 'Logout' button. Replacing an image calls replacePortfolioItem. Deleting calls deletePortfolioItem. All mutations optimistically update the UI and show toast notifications on success or failure.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-public-portfolio-section-frontend-src-components-portfolio-tsx-to-fetch-live-portfolio-items-from-the-backend-using-the-getportfolioitems-query-via-useactor-replacing-the-current-static-placeholder-data-category-filter-buttons-should-be-updated-to-all-branding-social-media-and-print-media-to-match-the-new-admin-categories-if-the-backend-returns-no-items-fall-back-to-displaying-a-tasteful-empty-state-message-no-work-uploaded-yet-check-back-soon",
+      "title": "Update the public Portfolio section (frontend/src/components/Portfolio.tsx) to fetch live portfolio items from the backend using the getPortfolioItems query via useActor, replacing the current static placeholder data. Category filter buttons should be updated to 'All', 'Branding', 'Social Media', and 'Print Media' to match the new admin categories. If the backend returns no items, fall back to displaying a tasteful empty-state message ('No work uploaded yet — check back soon!').",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-frontend-src-components-footer-tsx-locate-the-second-anchor-link-a-inside-the-second-paragraph-of-the-footer-s-bottom-bar-corresponding-to-xpath-html-1-body-1-div-1-div-1-footer-1-div-1-div-2-p-2-a-1-and-hide-it-completely-by-removing-it-from-the-rendered-output-or-setting-it-to-not-render",
+      "title": "In frontend/src/components/Footer.tsx, locate the second anchor link (<a>) inside the second paragraph of the footer's bottom bar (corresponding to XPath /html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[2]/p[2]/a[1]) and hide it completely by removing it from the rendered output or setting it to not render.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-frontend-src-components-skills-tsx-remove-the-three-span-elements-identified-by-the-following-xpaths-from-the-skill-proficiency-cards-rendered-in-section-4-1-html-1-body-1-div-1-div-1-main-1-section-4-div-1-div-3-div-2-div-1-div-1-div-1-div-1-span-1-2-html-1-body-1-div-1-div-1-main-1-section-4-div-1-div-3-div-2-div-2-div-1-div-1-div-1-span-1-3-html-1-body-1-div-1-div-1-main-1-section-4-div-1-div-3-div-2-div-4-div-1-div-1-div-1-span-1-these-are-the-first-span-elements-inside-the-inner-most-div-of-the-first-second-and-fourth-skill-cards-respectively-remove-them-from-the-rendered-output-entirely-so-they-no-longer-appear-on-the-page",
+      "title": "In frontend/src/components/Skills.tsx, remove the three <span> elements identified by the following XPaths from the skill proficiency cards rendered in section 4: (1) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1], (2) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[2]/div[1]/div[1]/div[1]/span[1], (3) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[4]/div[1]/div[1]/div[1]/span[1]. These are the first span elements inside the inner-most div of the first, second, and fourth skill cards respectively. Remove them from the rendered output entirely so they no longer appear on the page.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -152,6 +201,40 @@
       "id": "AR-9",
       "summary": "Footer with address (Pasarbindha, Balasore) and social media placeholders",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Update About Me section: remove '5+ years experience' and replace with '0 experience' (user is a fresher)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Admin Dashboard with secure login (Internet Identity) for Sulekha to upload, replace, and manage portfolio images directly without coding",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Dynamic portfolio gallery that reflects changes made from the Admin panel in real time, with lightbox and category filters (Branding, Social Media, Print Media)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Create a Motoko backend actor that stores portfolio items (id, title, category, imageData as Blob/base64 text, order) in stable storage. Expose update functions: addPortfolioItem, replacePortfolioItem, deletePortfolioItem, and a query function getPortfolioItems. Guard all update calls with a principal-based admin check — only a hardcoded admin principal (set at deploy time) may call mutating functions.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "In frontend/src/components/Skills.tsx, remove the three <span> elements identified by the following XPaths from the skill proficiency cards rendered in section 4: (1) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1], (2) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[2]/div[1]/div[1]/div[1]/span[1], (3) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[4]/div[1]/div[1]/div[1]/span[1]. These are the first span elements inside the inner-most div of the first, second, and fourth skill cards respectively. Remove them from the rendered output entirely so they no longer appear on the page.",
+      "reqIds": [
+        "REQ-19"
+      ],
       "status": "pending"
     }
   ],

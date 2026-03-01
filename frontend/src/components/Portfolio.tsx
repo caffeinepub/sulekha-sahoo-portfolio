@@ -1,64 +1,21 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { ExternalLink } from 'lucide-react';
+import { usePortfolioItems } from '../hooks/usePortfolioItems';
+import { ExternalLink, ImageOff } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
 
-type Category = 'All' | 'Logos' | 'Posters' | 'Social Media';
-
-const portfolioItems = [
-  {
-    id: 1,
-    title: 'Brand Identity',
-    category: 'Logos' as Category,
-    image: '/assets/generated/portfolio-logo-1.dim_600x600.png',
-    aspect: 'aspect-square',
-  },
-  {
-    id: 2,
-    title: 'Event Poster',
-    category: 'Posters' as Category,
-    image: '/assets/generated/portfolio-poster-1.dim_600x800.png',
-    aspect: 'aspect-[3/4]',
-  },
-  {
-    id: 3,
-    title: 'Social Campaign',
-    category: 'Social Media' as Category,
-    image: '/assets/generated/portfolio-social-1.dim_600x600.png',
-    aspect: 'aspect-square',
-  },
-  {
-    id: 4,
-    title: 'Minimalist Logo',
-    category: 'Logos' as Category,
-    image: '/assets/generated/portfolio-logo-1.dim_600x600.png',
-    aspect: 'aspect-square',
-  },
-  {
-    id: 5,
-    title: 'Product Poster',
-    category: 'Posters' as Category,
-    image: '/assets/generated/portfolio-poster-1.dim_600x800.png',
-    aspect: 'aspect-[3/4]',
-  },
-  {
-    id: 6,
-    title: 'Instagram Post',
-    category: 'Social Media' as Category,
-    image: '/assets/generated/portfolio-social-1.dim_600x600.png',
-    aspect: 'aspect-square',
-  },
-];
-
-const categories: Category[] = ['All', 'Logos', 'Posters', 'Social Media'];
+type Category = 'All' | 'Branding' | 'Social Media' | 'Print Media';
+const categories: Category[] = ['All', 'Branding', 'Social Media', 'Print Media'];
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<Category>('All');
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { data: items, isLoading } = usePortfolioItems();
 
   const filtered =
     activeCategory === 'All'
-      ? portfolioItems
-      : portfolioItems.filter((item) => item.category === activeCategory);
+      ? (items ?? [])
+      : (items ?? []).filter((item) => item.category === activeCategory);
 
   return (
     <section id="work" className="py-24 md:py-32 bg-white">
@@ -100,22 +57,60 @@ export default function Portfolio() {
           ))}
         </div>
 
+        {/* Loading state */}
+        {isLoading && (
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <Skeleton key={i} className="break-inside-avoid rounded-2xl min-h-[300px] w-full" />
+            ))}
+          </div>
+        )}
+
+        {/* Empty state */}
+        {!isLoading && filtered.length === 0 && (
+          <div className="flex flex-col items-center justify-center py-24 text-center">
+            <div className="w-16 h-16 rounded-2xl bg-sky/10 flex items-center justify-center mb-4">
+              <ImageOff className="w-8 h-8 text-sky/50" />
+            </div>
+            <p className="font-semibold text-ink/50 text-lg">
+              {activeCategory === 'All'
+                ? 'No work uploaded yet — check back soon!'
+                : `No ${activeCategory} items yet.`}
+            </p>
+            <p className="text-ink/35 text-sm mt-2">
+              Sulekha will be adding her designs here shortly.
+            </p>
+          </div>
+        )}
+
         {/* Grid */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-          {filtered.map((item, i) => (
-            <PortfolioItem key={item.id} item={item} delay={i * 80} />
-          ))}
-        </div>
+        {!isLoading && filtered.length > 0 && (
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+            {filtered.map((item, i) => (
+              <PortfolioItem
+                key={item.id}
+                title={item.title}
+                category={item.category}
+                imageUrl={item.imageData.getDirectURL()}
+                delay={i * 80}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
 }
 
 function PortfolioItem({
-  item,
+  title,
+  category,
+  imageUrl,
   delay,
 }: {
-  item: (typeof portfolioItems)[0];
+  title: string;
+  category: string;
+  imageUrl: string;
   delay: number;
 }) {
   const { ref, isVisible } = useScrollAnimation();
@@ -128,10 +123,10 @@ function PortfolioItem({
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className={`${item.aspect} min-h-[300px] overflow-hidden`}>
+      <div className="min-h-[300px] overflow-hidden">
         <img
-          src={item.image}
-          alt={item.title}
+          src={imageUrl}
+          alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
       </div>
@@ -139,13 +134,13 @@ function PortfolioItem({
       <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/50 transition-all duration-300 flex items-center justify-center">
         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
           <ExternalLink className="w-8 h-8 text-white mx-auto mb-2" />
-          <p className="text-white font-bold text-sm">{item.title}</p>
+          <p className="text-white font-bold text-sm">{title}</p>
         </div>
       </div>
       {/* Category badge */}
       <div className="absolute top-3 left-3">
         <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-ink text-xs font-semibold shadow-xs">
-          {item.category}
+          {category}
         </span>
       </div>
     </div>

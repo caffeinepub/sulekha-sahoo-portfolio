@@ -1,43 +1,23 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Apply User-Requested Changes to Portfolio Site",
+  "title": "Remove proficiency span elements from first, second, and fourth skill cards",
   "requirements": [
     {
-      "id": "REQ-11",
-      "summary": "Apply visible polish improvements: increase hero headline size, fix navigation scroll offsets, add phone placeholder, adjust portfolio grid height, and update footer copyright to 2025",
+      "id": "REQ-19",
+      "summary": "Remove the first span element from the inner-most div of the first (Photoshop), second (Illustrator), and fourth (InDesign) skill cards in the Skills section, leaving all other card content and animations intact.",
       "acceptanceCriteria": [
-        "Hero headline is visually large and bold on desktop screens",
-        "All nav links (Home, Work, Education, Contact) scroll correctly to their sections",
-        "Contact section shows a phone placeholder '+91 XXXXX XXXXX'",
-        "Portfolio grid items have adequate height for visual balance",
-        "Footer copyright line shows © 2025 Sulekha Sahoo"
+        "The first span element inside the inner-most div of the first skill card (Photoshop) is completely absent from the rendered DOM.",
+        "The first span element inside the inner-most div of the second skill card (Illustrator) is completely absent from the rendered DOM.",
+        "The first span element inside the inner-most div of the fourth skill card (InDesign) is completely absent from the rendered DOM.",
+        "The remaining content of each affected skill card (icon, label, other elements) is unaffected and still renders correctly.",
+        "The Skills section layout and scroll animations remain intact."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/Hero.tsx",
+          "path": "frontend/src/components/Skills.tsx",
           "operation": "modify",
-          "description": "Increase the hero headline font size for greater visual impact on desktop by modifying the text size classes from text-5xl md:text-7xl to text-6xl md:text-8xl or larger for the main headline element"
-        },
-        {
-          "path": "frontend/src/components/Navigation.tsx",
-          "operation": "modify",
-          "description": "Fix navigation scroll behavior to ensure all links scroll precisely to their target sections by adjusting the scroll offset in the handleNavClick function or adding scroll-margin-top to section elements to account for the fixed navigation bar height"
-        },
-        {
-          "path": "frontend/src/components/Contact.tsx",
-          "operation": "modify",
-          "description": "Add a phone number placeholder '+91 XXXXX XXXXX' to the contact information display by inserting a new contact info card with a Phone icon between the existing email and location cards"
-        },
-        {
-          "path": "frontend/src/components/Portfolio.tsx",
-          "operation": "modify",
-          "description": "Increase the portfolio grid item height for better visual balance by modifying the aspect-ratio or min-height classes on the portfolio item containers to make them slightly taller"
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Update the footer copyright year from 2024 to 2025 by changing the year displayed in the copyright text element to read '© 2025 Sulekha Sahoo. All rights reserved.'"
+          "description": "Remove the first span element from the inner-most div of the first, second, and fourth skill proficiency cards (Photoshop, Illustrator, and InDesign respectively). Locate these span elements by their position within the nested div structure and delete them entirely from the JSX, ensuring the remaining card content (icon, label, other spans or elements) remains unchanged and properly rendered."
         }
       ]
     }
