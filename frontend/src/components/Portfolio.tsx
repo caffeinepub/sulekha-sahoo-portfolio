@@ -1,0 +1,153 @@
+import { useState } from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { ExternalLink } from 'lucide-react';
+
+type Category = 'All' | 'Logos' | 'Posters' | 'Social Media';
+
+const portfolioItems = [
+  {
+    id: 1,
+    title: 'Brand Identity',
+    category: 'Logos' as Category,
+    image: '/assets/generated/portfolio-logo-1.dim_600x600.png',
+    aspect: 'aspect-square',
+  },
+  {
+    id: 2,
+    title: 'Event Poster',
+    category: 'Posters' as Category,
+    image: '/assets/generated/portfolio-poster-1.dim_600x800.png',
+    aspect: 'aspect-[3/4]',
+  },
+  {
+    id: 3,
+    title: 'Social Campaign',
+    category: 'Social Media' as Category,
+    image: '/assets/generated/portfolio-social-1.dim_600x600.png',
+    aspect: 'aspect-square',
+  },
+  {
+    id: 4,
+    title: 'Minimalist Logo',
+    category: 'Logos' as Category,
+    image: '/assets/generated/portfolio-logo-1.dim_600x600.png',
+    aspect: 'aspect-square',
+  },
+  {
+    id: 5,
+    title: 'Product Poster',
+    category: 'Posters' as Category,
+    image: '/assets/generated/portfolio-poster-1.dim_600x800.png',
+    aspect: 'aspect-[3/4]',
+  },
+  {
+    id: 6,
+    title: 'Instagram Post',
+    category: 'Social Media' as Category,
+    image: '/assets/generated/portfolio-social-1.dim_600x600.png',
+    aspect: 'aspect-square',
+  },
+];
+
+const categories: Category[] = ['All', 'Logos', 'Posters', 'Social Media'];
+
+export default function Portfolio() {
+  const [activeCategory, setActiveCategory] = useState<Category>('All');
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+
+  const filtered =
+    activeCategory === 'All'
+      ? portfolioItems
+      : portfolioItems.filter((item) => item.category === activeCategory);
+
+  return (
+    <section id="work" className="py-24 md:py-32 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section label */}
+        <div className="flex items-center gap-3 mb-4">
+          <span className="w-8 h-0.5 bg-sky rounded-full" />
+          <span className="text-sky text-sm font-semibold tracking-widest uppercase">Portfolio</span>
+        </div>
+
+        <div
+          ref={titleRef as React.RefObject<HTMLDivElement>}
+          className={`mb-10 transition-all duration-700 ${
+            titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          <h2 className="font-display text-4xl md:text-5xl font-black text-ink leading-tight">
+            My <span className="text-sky">Work</span>
+          </h2>
+          <p className="text-ink/60 mt-3 text-lg max-w-xl">
+            A curated selection of logos, posters, and social media designs.
+          </p>
+        </div>
+
+        {/* Filter buttons */}
+        <div className="flex flex-wrap gap-3 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                activeCategory === cat
+                  ? 'bg-sky text-white shadow-sky-sm'
+                  : 'bg-surface text-ink/60 hover:text-sky hover:bg-sky/10 border border-ink/10'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Grid */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+          {filtered.map((item, i) => (
+            <PortfolioItem key={item.id} item={item} delay={i * 80} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PortfolioItem({
+  item,
+  delay,
+}: {
+  item: (typeof portfolioItems)[0];
+  delay: number;
+}) {
+  const { ref, isVisible } = useScrollAnimation();
+
+  return (
+    <div
+      ref={ref as React.RefObject<HTMLDivElement>}
+      className={`break-inside-avoid group relative overflow-hidden rounded-2xl bg-surface border border-ink/8 hover:border-sky/30 hover:shadow-sky-sm transition-all duration-500 min-h-[300px] ${
+        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      <div className={`${item.aspect} min-h-[300px] overflow-hidden`}>
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/50 transition-all duration-300 flex items-center justify-center">
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
+          <ExternalLink className="w-8 h-8 text-white mx-auto mb-2" />
+          <p className="text-white font-bold text-sm">{item.title}</p>
+        </div>
+      </div>
+      {/* Category badge */}
+      <div className="absolute top-3 left-3">
+        <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-ink text-xs font-semibold shadow-xs">
+          {item.category}
+        </span>
+      </div>
+    </div>
+  );
+}

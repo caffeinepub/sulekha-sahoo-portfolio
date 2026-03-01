@@ -1,0 +1,41 @@
+{
+  "kind": "build_request",
+  "title": "Apply User-Requested Changes to Portfolio Site",
+  "projectName": "Sulekha Sahoo Portfolio",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "text": "Review the existing portfolio site and clarify what specific changes the user wants. In the meantime, make the following visible polish improvements: (1) Increase the hero section headline font size for greater visual impact on desktop. (2) Ensure all navigation links scroll precisely to their target sections without offset issues. (3) Add a real phone number placeholder '+91 XXXXX XXXXX' in the Contact section if not already present. (4) Make the portfolio grid items slightly taller for better visual balance. (5) Ensure the footer copyright year reads 2025.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "I WANT SOME CHAN GES"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hero headline is visually large and bold on desktop screens",
+        "All nav links (Home, Work, Education, Contact) scroll correctly to their sections",
+        "Contact section shows a phone placeholder '+91 XXXXX XXXXX'",
+        "Portfolio grid items have adequate height for visual balance",
+        "Footer copyright line shows © 2025 Sulekha Sahoo"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not alter the immutable frontend paths (hooks, main.tsx, ui components)",
+    "All existing features and content must remain intact"
+  ],
+  "nonGoals": [
+    "Adding new sections or features not previously requested",
+    "Backend changes",
+    "Changing the overall color scheme or typography system"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

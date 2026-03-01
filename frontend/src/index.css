@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Sky blue accent — primary brand color */
+    --sky: 0.72 0.16 220;
+    --sky-dark: 0.62 0.18 222;
+    --sky-light: 0.85 0.10 218;
+
+    /* Coral accent */
+    --coral: 0.68 0.18 28;
+
+    /* Neutral ink */
+    --ink: 0.18 0.01 250;
+
+    /* Surface / off-white */
+    --surface: 0.975 0.005 240;
+
+    /* Shadcn tokens — light mode */
+    --background: 0.99 0 0;
+    --foreground: 0.18 0.01 250;
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.01 250;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.01 250;
+    --primary: 0.72 0.16 220;
+    --primary-foreground: 1 0 0;
+    --secondary: 0.975 0.005 240;
+    --secondary-foreground: 0.18 0.01 250;
+    --muted: 0.96 0.005 240;
+    --muted-foreground: 0.50 0.01 250;
+    --accent: 0.96 0.005 240;
+    --accent-foreground: 0.18 0.01 250;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.90 0.005 240;
+    --input: 0.90 0.005 240;
+    --ring: 0.72 0.16 220;
+    --chart-1: 0.72 0.16 220;
+    --chart-2: 0.68 0.18 28;
+    --chart-3: 0.65 0.15 160;
+    --chart-4: 0.75 0.14 300;
+    --chart-5: 0.80 0.12 80;
+    --sidebar: 0.99 0 0;
+    --sidebar-foreground: 0.18 0.01 250;
+    --sidebar-primary: 0.72 0.16 220;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.96 0.005 240;
+    --sidebar-accent-foreground: 0.18 0.01 250;
+    --sidebar-border: 0.90 0.005 240;
+    --sidebar-ring: 0.72 0.16 220;
+  }
+
+  .dark {
+    --background: 0.14 0.01 250;
+    --foreground: 0.97 0 0;
+    --card: 0.18 0.01 250;
+    --card-foreground: 0.97 0 0;
+    --popover: 0.22 0.01 250;
+    --popover-foreground: 0.97 0 0;
+    --primary: 0.72 0.16 220;
+    --primary-foreground: 1 0 0;
+    --secondary: 0.22 0.01 250;
+    --secondary-foreground: 0.97 0 0;
+    --muted: 0.22 0.01 250;
+    --muted-foreground: 0.65 0.01 250;
+    --accent: 0.28 0.01 250;
+    --accent-foreground: 0.97 0 0;
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.97 0 0;
+    --border: 1 0 0 / 10%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.72 0.16 220;
+    --sidebar: 0.18 0.01 250;
+    --sidebar-foreground: 0.97 0 0;
+    --sidebar-primary: 0.72 0.16 220;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.22 0.01 250;
+    --sidebar-accent-foreground: 0.97 0 0;
+    --sidebar-border: 1 0 0 / 10%;
+    --sidebar-ring: 0.72 0.16 220;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Syne', system-ui, sans-serif;
+  }
+
+  .bg-hero-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.97 0.01 220) 0%,
+      oklch(0.99 0 0) 40%,
+      oklch(0.97 0.02 30) 100%
+    );
+  }
+
+  .text-sky {
+    color: oklch(var(--sky));
+  }
+
+  .text-sky-light {
+    color: oklch(var(--sky-light));
+  }
+
+  .text-coral {
+    color: oklch(var(--coral));
+  }
+
+  .text-ink {
+    color: oklch(var(--ink));
+  }
+
+  .bg-sky {
+    background-color: oklch(var(--sky));
+  }
+
+  .bg-sky-dark {
+    background-color: oklch(var(--sky-dark));
+  }
+
+  .bg-sky-light {
+    background-color: oklch(var(--sky-light));
+  }
+
+  .bg-coral {
+    background-color: oklch(var(--coral));
+  }
+
+  .bg-ink {
+    background-color: oklch(var(--ink));
+  }
+
+  .bg-surface {
+    background-color: oklch(var(--surface));
+  }
+
+  .border-sky {
+    border-color: oklch(var(--sky));
+  }
+
+  .border-coral {
+    border-color: oklch(var(--coral));
+  }
+
+  .shadow-sky-sm {
+    box-shadow: 0 2px 12px oklch(var(--sky) / 0.25);
+  }
+
+  .shadow-sky-md {
+    box-shadow: 0 4px 20px oklch(var(--sky) / 0.35);
+  }
+
+  .shadow-sky-lg {
+    box-shadow: 0 8px 32px oklch(var(--sky) / 0.40);
+  }
+
+  .hover\:shadow-sky-sm:hover {
+    box-shadow: 0 2px 12px oklch(var(--sky) / 0.25);
+  }
+
+  .hover\:shadow-sky-md:hover {
+    box-shadow: 0 4px 20px oklch(var(--sky) / 0.35);
+  }
+
+  .hover\:shadow-sky-lg:hover {
+    box-shadow: 0 8px 32px oklch(var(--sky) / 0.40);
+  }
+}
