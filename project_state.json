@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 15,
+  "projectStateVersion": 17,
   "summary": "Portfolio website for Sulekha Sahoo, a Professional Graphic Designer. Site includes hero, about me, skills gallery, education timeline, masonry portfolio grid, service cards, contact form, and footer. An Admin Dashboard with secure login (Internet Identity) and one-click portfolio photo upload/replace functionality is being added, so Sulekha can manage portfolio images and content without touching code.",
   "architectural_notes": [
     "Sky blue accent color palette with white space and minimalist-vibrant aesthetic",
@@ -144,6 +144,14 @@
       "title": "In frontend/src/components/Skills.tsx, remove the three <span> elements identified by the following XPaths from the skill proficiency cards rendered in section 4: (1) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1], (2) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[2]/div[1]/div[1]/div[1]/span[1], (3) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[4]/div[1]/div[1]/div[1]/span[1]. These are the first span elements inside the inner-most div of the first, second, and fourth skill cards respectively. Remove them from the rendered output entirely so they no longer appear on the page.",
       "reqIds": [
         "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-frontend-src-components-education-tsx-review-and-polish-the-existing-education-timeline-entries-ensure-all-four-milestones-are-clearly-labelled-and-well-presented-1-nimatpur-girls-high-school-bse-10th-2-chse-2-12th-3-3-degree-bachelor-s-4-pgdca-multimedia-training-at-mayuri-multimedia-for-each-entry-display-the-institution-name-prominently-the-qualification-level-as-a-subtitle-and-include-a-short-descriptive-label-e-g-secondary-education-higher-secondary-graduation-diploma-in-computer-applications-multimedia-ensure-the-vertical-alternating-timeline-layout-sky-blue-milestone-markers-and-scroll-triggered-animations-are-intact-and-visually-consistent-with-the-rest-of-the-site",
+      "title": "In frontend/src/components/Education.tsx, review and polish the existing Education Timeline entries. Ensure all four milestones are clearly labelled and well-presented: (1) Nimatpur Girls High School – BSE (10th), (2) CHSE – +2 (12th), (3) +3 Degree (Bachelor's), (4) PGDCA / Multimedia training at Mayuri Multimedia. For each entry, display the institution name prominently, the qualification/level as a subtitle, and include a short descriptive label (e.g. 'Secondary Education', 'Higher Secondary', 'Graduation', 'Diploma in Computer Applications & Multimedia'). Ensure the vertical alternating timeline layout, sky-blue milestone markers, and scroll-triggered animations are intact and visually consistent with the rest of the site.",
+      "reqIds": [
+        "REQ-20"
       ],
       "version": 1
     }

@@ -1,36 +1,44 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { GraduationCap, Award } from 'lucide-react';
+import { GraduationCap, Award, BookOpen, Layers } from 'lucide-react';
 
 const timeline = [
   {
     year: '2010',
-    title: 'High School (BSE)',
+    title: 'Secondary Education (10th)',
+    qualification: 'BSE — Board of Secondary Education',
     institution: 'Nimatpur Girls High School',
-    description: 'Completed secondary education with a focus on arts and sciences.',
-    icon: GraduationCap,
+    description: 'Completed matriculation (Class X) under the Board of Secondary Education, Odisha, with a strong foundation in arts and sciences.',
+    label: 'Secondary Education',
+    icon: BookOpen,
     type: 'school',
   },
   {
     year: '2012',
-    title: 'Higher Secondary (CHSE)',
-    institution: 'CHSE Board',
-    description: 'Completed +2 higher secondary education, building a strong academic foundation.',
+    title: 'Higher Secondary (12th)',
+    qualification: 'CHSE — Council of Higher Secondary Education',
+    institution: 'CHSE, Odisha',
+    description: 'Completed +2 (Class XII) under the Council of Higher Secondary Education, Odisha, building a solid academic base for further studies.',
+    label: 'Higher Secondary',
     icon: GraduationCap,
     type: 'school',
   },
   {
     year: '2015',
-    title: '+3 Degree',
-    institution: 'Degree College',
-    description: 'Earned a Bachelor\'s degree, developing analytical and creative thinking skills.',
+    title: 'Bachelor\'s Degree (+3)',
+    qualification: 'Graduation — B.A. / B.Sc.',
+    institution: 'Degree College, Odisha',
+    description: 'Earned a three-year Bachelor\'s degree, developing analytical thinking, communication skills, and a broad academic perspective.',
+    label: 'Graduation',
     icon: GraduationCap,
     type: 'degree',
   },
   {
     year: '2016',
-    title: 'PGDCA & Multimedia',
+    title: 'PGDCA & Multimedia Design',
+    qualification: 'Post Graduate Diploma in Computer Applications',
     institution: 'Mayuri Multimedia',
-    description: 'Specialized training in graphic design, multimedia production, and digital tools.',
+    description: 'Specialized professional training in graphic design, multimedia production, Adobe Creative Suite, CorelDRAW, and digital tools — the foundation of a creative career.',
+    label: 'Diploma in Computer Applications & Multimedia',
     icon: Award,
     type: 'certification',
   },
@@ -58,7 +66,7 @@ export default function Education() {
             My Academic <span className="text-sky">Journey</span>
           </h2>
           <p className="text-ink/60 mt-3 text-lg max-w-xl">
-            A path of continuous learning and creative development.
+            A path of continuous learning, creative growth, and professional development.
           </p>
         </div>
 
@@ -99,19 +107,44 @@ function TimelineItem({
     >
       {/* Content card */}
       <div className={`flex-1 ml-12 md:ml-0 ${isEven ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-        <div className={`inline-block bg-white border border-sky/15 rounded-2xl p-6 shadow-xs hover:shadow-sky-sm hover:border-sky/30 transition-all duration-300 max-w-sm ${isEven ? 'md:ml-auto' : ''}`}>
-          <div className={`flex items-center gap-2 mb-2 ${isEven ? 'md:flex-row-reverse' : ''}`}>
+        <div
+          className={`inline-block bg-white border border-sky/15 rounded-2xl p-6 shadow-xs hover:shadow-sky-sm hover:border-sky/30 transition-all duration-300 max-w-sm w-full ${
+            isEven ? 'md:ml-auto' : ''
+          }`}
+        >
+          {/* Year + label badges */}
+          <div className={`flex flex-wrap items-center gap-2 mb-3 ${isEven ? 'md:flex-row-reverse md:justify-start' : ''}`}>
             <span className="px-2.5 py-0.5 rounded-full bg-sky/10 text-sky text-xs font-bold">
               {item.year}
             </span>
-            {item.type === 'certification' && (
-              <span className="px-2.5 py-0.5 rounded-full bg-coral/10 text-coral text-xs font-bold">
-                Certification
-              </span>
-            )}
+            <span
+              className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${
+                item.type === 'certification'
+                  ? 'bg-coral/10 text-coral'
+                  : item.type === 'degree'
+                  ? 'bg-sky/15 text-sky'
+                  : 'bg-ink/8 text-ink/60'
+              }`}
+            >
+              {item.label}
+            </span>
           </div>
-          <h3 className="font-display font-bold text-ink text-lg mb-1">{item.title}</h3>
-          <p className="text-sky font-semibold text-sm mb-2">{item.institution}</p>
+
+          {/* Title */}
+          <h3 className="font-display font-bold text-ink text-lg mb-1 leading-snug">
+            {item.title}
+          </h3>
+
+          {/* Qualification */}
+          <p className="text-sky font-semibold text-sm mb-1">{item.qualification}</p>
+
+          {/* Institution */}
+          <p className={`text-ink/50 text-xs font-medium mb-3 flex items-center gap-1 ${isEven ? 'md:justify-end' : ''}`}>
+            <Layers className="w-3 h-3 shrink-0" />
+            {item.institution}
+          </p>
+
+          {/* Description */}
           <p className="text-ink/60 text-sm leading-relaxed">{item.description}</p>
         </div>
       </div>

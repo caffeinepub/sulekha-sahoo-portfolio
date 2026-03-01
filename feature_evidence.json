@@ -1,4 +1,25 @@
 {
   "kind": "feature_evidence_report",
-  "features": []
+  "features": [
+    {
+      "featureId": "feature-in-frontend-src-components-education-tsx-review-and-polish-the-existing-education-timeline-entries-ensure-all-four-milestones-are-clearly-labelled-and-well-presented-1-nimatpur-girls-high-school-bse-10th-2-chse-2-12th-3-3-degree-bachelor-s-4-pgdca-multimedia-training-at-mayuri-multimedia-for-each-entry-display-the-institution-name-prominently-the-qualification-level-as-a-subtitle-and-include-a-short-descriptive-label-e-g-secondary-education-higher-secondary-graduation-diploma-in-computer-applications-multimedia-ensure-the-vertical-alternating-timeline-layout-sky-blue-milestone-markers-and-scroll-triggered-animations-are-intact-and-visually-consistent-with-the-rest-of-the-site",
+      "featureTitle": "In frontend/src/components/Education.tsx, review and polish the existing Education Timeline entries. Ensure all four milestones are clearly labelled and well-presented: (1) Nimatpur Girls High School – BSE (10th), (2) CHSE – +2 (12th), (3) +3 Degree (Bachelor's), (4) PGDCA / Multimedia training at Mayuri Multimedia. For each entry, display the institution name prominently, the qualification/level as a subtitle, and include a short descriptive label (e.g. 'Secondary Education', 'Higher Secondary', 'Graduation', 'Diploma in Computer Applications & Multimedia'). Ensure the vertical alternating timeline layout, sky-blue milestone markers, and scroll-triggered animations are intact and visually consistent with the rest of the site.",
+      "files": [
+        "frontend/src/components/Education.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-20"
+      ],
+      "confidence": "high"
+    }
+  ]
 }

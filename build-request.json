@@ -1,37 +1,41 @@
 {
   "kind": "build_request",
-  "title": "Remove proficiency span elements from first, second, and fourth skill cards",
+  "title": "Polish and finalize Education Timeline section",
+  "projectName": "Sulekha Sahoo Portfolio",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-19",
-      "text": "In frontend/src/components/Skills.tsx, remove the three <span> elements identified by the following XPaths from the skill proficiency cards rendered in section 4: (1) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1], (2) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[2]/div[1]/div[1]/div[1]/span[1], (3) /html[1]/body[1]/div[1]/div[1]/main[1]/section[4]/div[1]/div[3]/div[2]/div[4]/div[1]/div[1]/div[1]/span[1]. These are the first span elements inside the inner-most div of the first, second, and fourth skill cards respectively. Remove them from the rendered output entirely so they no longer appear on the page.",
+      "id": "REQ-20",
+      "text": "In frontend/src/components/Education.tsx, review and polish the existing Education Timeline entries. Ensure all four milestones are clearly labelled and well-presented: (1) Nimatpur Girls High School – BSE (10th), (2) CHSE – +2 (12th), (3) +3 Degree (Bachelor's), (4) PGDCA / Multimedia training at Mayuri Multimedia. For each entry, display the institution name prominently, the qualification/level as a subtitle, and include a short descriptive label (e.g. 'Secondary Education', 'Higher Secondary', 'Graduation', 'Diploma in Computer Applications & Multimedia'). Ensure the vertical alternating timeline layout, sky-blue milestone markers, and scroll-triggered animations are intact and visually consistent with the rest of the site.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-recent"
         ],
         "quotes": [
-          "plz add edit konw"
+          "edit now",
+          "plz addit education qulification accoding to the pdf aboate any change"
         ]
       },
       "acceptanceCriteria": [
-        "The first span element inside the inner-most div of the first skill card (Photoshop) is completely absent from the rendered DOM.",
-        "The first span element inside the inner-most div of the second skill card (Illustrator) is completely absent from the rendered DOM.",
-        "The first span element inside the inner-most div of the fourth skill card (InDesign) is completely absent from the rendered DOM.",
-        "The remaining content of each affected skill card (icon, label, other elements) is unaffected and still renders correctly.",
-        "The Skills section layout and scroll animations remain intact."
+        "All four education milestones are visible in the Education section in chronological order.",
+        "Each milestone displays the institution name, qualification/level, and a short descriptive label.",
+        "The vertical timeline layout with sky-blue markers is preserved.",
+        "Scroll-triggered entrance animations are functional for each milestone.",
+        "The section is fully responsive on mobile and desktop."
       ]
     }
   ],
   "constraints": [
-    "Only modify frontend/src/components/Skills.tsx — do not touch any other file.",
-    "Do not alter any other elements within the skill cards beyond removing the specified span elements."
+    "Do not modify any files listed under frontend.immutablePaths.",
+    "Do not alter any other sections (Hero, About, Skills, Portfolio, Services, Contact, Footer, Navigation) while editing Education.tsx.",
+    "No backend changes are required for this update."
   ],
   "nonGoals": [
-    "Modifying any other section or component outside of Skills.tsx.",
-    "Changing the visual layout or styling of the remaining skill card content.",
-    "Adding new content or badges to the skill cards."
+    "Adding new PDF upload or parsing functionality.",
+    "Adding backend persistence for education data.",
+    "Creating new education entries beyond the four established milestones.",
+    "Modifying any section other than the Education Timeline."
   ],
   "imageRequirements": {
     "required": [],

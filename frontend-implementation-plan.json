@@ -1,23 +1,23 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Remove proficiency span elements from first, second, and fourth skill cards",
+  "title": "Polish and finalize Education Timeline section",
   "requirements": [
     {
-      "id": "REQ-19",
-      "summary": "Remove the first span element from the inner-most div of the first (Photoshop), second (Illustrator), and fourth (InDesign) skill cards in the Skills section, leaving all other card content and animations intact.",
+      "id": "REQ-20",
+      "summary": "Review and polish the Education Timeline section to clearly display all four academic milestones with proper labeling, institution names, qualifications, descriptive labels, and ensure the vertical alternating timeline layout with sky-blue markers and scroll-triggered animations remain intact and responsive",
       "acceptanceCriteria": [
-        "The first span element inside the inner-most div of the first skill card (Photoshop) is completely absent from the rendered DOM.",
-        "The first span element inside the inner-most div of the second skill card (Illustrator) is completely absent from the rendered DOM.",
-        "The first span element inside the inner-most div of the fourth skill card (InDesign) is completely absent from the rendered DOM.",
-        "The remaining content of each affected skill card (icon, label, other elements) is unaffected and still renders correctly.",
-        "The Skills section layout and scroll animations remain intact."
+        "All four education milestones are visible in the Education section in chronological order.",
+        "Each milestone displays the institution name, qualification/level, and a short descriptive label.",
+        "The vertical timeline layout with sky-blue markers is preserved.",
+        "Scroll-triggered entrance animations are functional for each milestone.",
+        "The section is fully responsive on mobile and desktop."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/Skills.tsx",
+          "path": "frontend/src/components/Education.tsx",
           "operation": "modify",
-          "description": "Remove the first span element from the inner-most div of the first, second, and fourth skill proficiency cards (Photoshop, Illustrator, and InDesign respectively). Locate these span elements by their position within the nested div structure and delete them entirely from the JSX, ensuring the remaining card content (icon, label, other spans or elements) remains unchanged and properly rendered."
+          "description": "Update the Education Timeline component to display all four milestones in chronological order: (1) Nimatpur Girls High School – BSE (10th) with label 'Secondary Education', (2) CHSE – +2 (12th) with label 'Higher Secondary', (3) +3 Degree (Bachelor's) with label 'Graduation', (4) PGDCA / Multimedia training at Mayuri Multimedia with label 'Diploma in Computer Applications & Multimedia'. Ensure each entry prominently displays the institution name, qualification/level as a subtitle, and includes the descriptive label. Preserve the existing vertical alternating timeline layout, sky-blue milestone markers, scroll-triggered animations using the useScrollAnimation hook, and ensure full responsiveness across mobile and desktop viewports."
         }
       ]
     }
